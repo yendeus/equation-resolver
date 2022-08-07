@@ -7,10 +7,18 @@ import { ResolveOptions } from './ResolveOptions'
 import { checkArgs } from './utils/checkArgs'
 import { isInteger } from './utils/isInteger'
 import { valueWrap } from './valueWrap'
-import { plus } from './operators'
+import { plus, multiply } from './operators'
 import { resolveNode } from './resolve'
 import { createNumberFunction } from './utils/createNumberFunction'
 import { ResolverError } from './utils/ResolverError'
+
+function rFact(num: number): number
+{
+    if (num === 0)
+      { return 1; }
+    else
+      { return num * rFact( num - 1 ); }
+}
 
 /** Implementation of common functions with common abbreviated english names */
 export const defaultFunctions: FunctionLookup = {
@@ -29,7 +37,7 @@ export const defaultFunctions: FunctionLookup = {
         const factor = Math.pow(10, precision)
         return Math.round(x * factor) / factor
     }, 1 , 2),
-
+    fac: createNumberFunction(rFact),
     max: createNumberFunction(Math.max, 1, Infinity),
     min: createNumberFunction(Math.min, 1, Infinity),
 
@@ -91,4 +99,43 @@ export const defaultFunctions: FunctionLookup = {
 
         return sum
     },
+
+/*
+    prod: (node: EquationNodeFunction, options: ResolveOptions) => {
+        checkArgs(node, 4, 4)
+
+        const [variable, startTree, endTree, expression] = node.args
+
+        if (variable.type !== 'variable') {
+            throw new ResolverError('functionProd1Variable', variable, { name: node.name, variableType: variable.type })
+        }
+
+        let start = resolveNode(startTree, options)
+        let end = resolveNode(endTree, options)
+        if (!isInteger(start)) {
+            throw new ResolverError('functionProd2Integer', startTree, { name: node.name })
+        }
+        if (!isInteger(end)) {
+            throw new ResolverError('functionProd3Integer', endTree, { name: node.name })
+        }
+        if (start > end) {
+            [start, end] = [end, start]
+        }
+        const enhancedOptions = {
+            functions: options.functions,
+            variables: { ...options.variables } as VariableLookup,
+        }
+
+        // Get initial value
+        enhancedOptions.variables[variable.name] = start
+        let prod = resolveNode(expression, enhancedOptions)
+        var a;
+        for (let i = start.value + 1; i <= end.value; i++) {
+            enhancedOptions.variables[variable.name] = valueWrap(i)
+            prod = multiply(node, prod, resolveNode(expression, enhancedOptions), )
+        }
+
+        return prod
+    },*/
+
 }

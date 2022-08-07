@@ -51,8 +51,8 @@ export function minus(node: EquationNode, a: ResultNode, b: ResultNode): ResultN
 export function plusminus(node: EquationNode, a: ResultNode, b: ResultNode): ResultNode {
     throw new ResolverError('plusminusUnhandled', node, {})
 }
-
-function multiply(node: EquationNode,aTree: ResultNode, bTree: ResultNode, multiplyVectors: (node: EquationNode, a: ResultNodeMatrix, b: ResultNodeMatrix) => ResultNodeNumber | ResultNodeMatrix): ResultNode {
+//plus(node: EquationNode, aTree: ResultNode, bTree: ResultNode)
+export function multiply(node: EquationNode,aTree: ResultNode, bTree: ResultNode, multiplyVectors: (node: EquationNode, a: ResultNodeMatrix, b: ResultNodeMatrix) => ResultNodeNumber | ResultNodeMatrix): ResultNode {
     return handleCases(node, aTree, bTree,
         (a, b) => combineUnits(a, b, (unit1, unit2) => unit1 + unit2),
         // number, number

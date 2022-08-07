@@ -11,6 +11,10 @@ export type ResultResolveError = { type: 'resolve-error', errorNode: EquationNod
     | { errorType: 'functionSum1Variable', name: string, variableType: string }
     | { errorType: 'functionSum2Integer', name: string }
     | { errorType: 'functionSum3Integer', name: string }
+    | { errorType: 'functionProd1Variable', name: string, variableType: string }
+    | { errorType: 'functionProd2Integer', name: string }
+    | { errorType: 'functionProd3Integer', name: string }
+
 
     | { errorType: 'variableUnknown', name: string }
 
