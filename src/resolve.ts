@@ -107,16 +107,16 @@ export const resolveNode = (
         case 'greater-than-equals':
         case 'approximates': {
             //if (node.b.type === 'number'){
-                let x = ''
-                x = x + node.b
-                return {
-                    type: 'number',
-                    value: parseFloat(x),
-                }
-                //}
+            let x = ''
+            x = x + node.b
+            return {
+                type: 'number',
+                value: parseFloat(x),
             }
-            //console.log();
-            //throw new ResolverError('noComparison', node, {})
+                //}
+        }
+        //console.log();
+        //throw new ResolverError('noComparison', node, {})
         case 'matrix': {
             // Keep track of resolved unit
             let unit: UnitLookup | null = null
