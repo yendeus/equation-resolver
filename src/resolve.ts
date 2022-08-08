@@ -109,7 +109,7 @@ export const resolveNode = (
             //if (node.b.type === 'number'){
             let x = ''
             x = x + node.b
-            console.log(x);
+            console.log(x)
             return {
                 type: 'number',
                 value: parseFloat(x),
