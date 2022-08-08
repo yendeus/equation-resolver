@@ -105,7 +105,7 @@ export const resolveNode = (
         case 'less-than-equals':
         case 'greater-than':
         case 'greater-than-equals':
-        case 'approximates':
+        case 'approximates': {
             //if (node.b.type === 'number'){
             let x = ''
             x = x + node.b
@@ -114,7 +114,7 @@ export const resolveNode = (
                 value: parseFloat(x),
             }
             //}
-            
+        }
             //console.log();
             //throw new ResolverError('noComparison', node, {})
         case 'matrix': {
