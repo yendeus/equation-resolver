@@ -31,7 +31,7 @@ export type ResultResolveError = { type: 'resolve-error', errorNode: EquationNod
 
     | { errorType: 'operatorInvalidArguments', operator: string, a: 'matrix' | 'number', b: 'matrix' | 'number' }
 
-    | { errorType: 'noComparison' }
+    //| { errorType: 'noComparison' }
 
     | { errorType: 'matrixDifferentUnits' }
     | { errorType: 'matrixNoNesting' }
