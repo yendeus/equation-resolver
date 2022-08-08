@@ -113,7 +113,7 @@ export const resolveNode = (
                 type: 'number',
                 value: parseFloat(x),
             }
-                //}
+            //}
         }
         //console.log();
         //throw new ResolverError('noComparison', node, {})
