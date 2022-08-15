@@ -41,4 +41,5 @@ export type ResultResolveError = { type: 'resolve-error', errorNode: EquationNod
     | { errorType: 'placeholder' }
 
     | { errorType: 'invalidUnit' }
+    | { errorType: 'wrapError' }
 )
